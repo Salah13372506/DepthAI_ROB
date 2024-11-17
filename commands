@@ -1,0 +1,40 @@
+
+
+
+
+
+
+
+cd ~/depthai_ws
+colcon build --packages-select depthai_examples --symlink-install
+
+
+source /opt/ros/humble/setup.bash
+source ~/depthai_ws/install/setup.bash
+
+
+
+
+
+
+# Terminal 1
+ros2 launch depthai_examples stereo_inertial_node.launch.py depth:=true
+
+# Terminal 2
+ros2 run depthai_examples depth_to_gray.py
+
+
+
+
+params : 
+
+# Seuil de distance pour considérer un obstacle comme proche
+ros2 param set /obstacle_detector_node distance_threshold 30
+
+# Tailles minimale et maximale des obstacles (en pixels)
+ros2 param set /obstacle_detector_node min_blob_size 500
+ros2 param set /obstacle_detector_node max_blob_size 10000
+
+# Paramètres de filtrage
+ros2 param set /obstacle_detector_node bilateral_sigma 50  # Force du lissage bilatéral
+ros2 param set /obstacle_detector_node blur_size 5        # Taille du kernel gaussien
