@@ -11,6 +11,7 @@ from std_msgs.msg import MultiArrayDimension
 
 #Added a comment to test the pushes
 
+#Added a comment to test Vscode source control
 class ObstacleDetectorNode(Node):
     def __init__(self):
         super().__init__('obstacle_detector_node')
