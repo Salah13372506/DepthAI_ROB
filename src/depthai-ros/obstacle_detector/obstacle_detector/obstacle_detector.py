@@ -8,6 +8,9 @@ import numpy as np
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import MultiArrayDimension
 
+
+#Added a comment to test the pushes
+
 class ObstacleDetectorNode(Node):
     def __init__(self):
         super().__init__('obstacle_detector_node')
